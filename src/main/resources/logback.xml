@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <timestamp key="byDate" datePattern="yyyyMMdd"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date [%thread] %-5level %logger{76}:%line - %msg [CORR_ID=%X{type}]%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path:-./build}/logs/tpp-app-documentacion.log</file>
+        <append>true</append>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%date [%thread] %-5level %logger{76}:%line - %msg [CORR_ID=%X{type}]%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path:-./build}/logs/tpp-app-documentacion-%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
+            <maxHistory>10</maxHistory> <!--dias-->
+            <maxFileSize>10MB</maxFileSize>
+            <totalSizeCap>500MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="TIMES_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d | %X{correlationId} | %X{type} | %X{startTime} | %X{endTime} | %X{status} | %X{endPoint} | %X{typeError} | %X{servicePath} | %X{message} | %X{stackTrace1} | %X{stackTrace2} %n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="TIME_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>%d | %X{correlationId} | %X{type} | %X{startTime} | %X{endTime} | %X{status} | %X{endPoint} | %X{typeError} | %X{servicePath} | %X{message} | %X{stackTrace1} | %X{stackTrace2} %n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path:-./build}/logs/tpp-app-documentacion-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory> <!--dias-->
+        </rollingPolicy>
+    </appender>
+
+    <logger name="TIME_LOGGER" level="INFO" additivity="false">
+        <appender-ref ref="TIME_APPENDER"/>
+        <appender-ref ref="TIMES_STDOUT"/>
+    </logger>
+    <logger name="httpclient" level="WARN"/>
+    <logger name="org.springframework" level="WARN"/>
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="LOGFILE"/>
+    </root>
+
+</configuration>
