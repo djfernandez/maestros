@@ -16,10 +16,7 @@ pipeline {
         stage('Creando docker') {
           steps {
             echo 'Iniciando compilacion de imagen de Docker'
-            script {
-              def dockerImage=docker.build("maestros:00")
-            }
-
+            sh 'docker build -f Dockerfile -t fuentes /var/jenkins_home/workspace/maestros_main'
           }
         }
 
