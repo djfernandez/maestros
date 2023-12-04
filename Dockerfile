@@ -1,8 +1,9 @@
 # Dockerfile to build API Service Container
 ############################################################
 FROM openjdk:17-alpine
-ARG fuentes
-COPY ${fuentes}/target/maestros-0.0.1-SNAPSHOT.jar /app/application.jar
+ARG FUENTES
+RUN echo $FUENTES
+COPY ${FUENTES}/target/maestros-0.0.1-SNAPSHOT.jar /app/application.jar
 #COPY src/main/resources/application.yml /config/application.yaml
 #COPY src/main/resources/logback.xml /config/logback.xml
 EXPOSE 6061
