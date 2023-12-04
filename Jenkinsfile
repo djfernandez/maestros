@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Limpiar proyecto') {
       steps {
+        sh 'chmod +x mvnw'
         sh './mvnw clean'
         sh './mvnw compile'
         sh './mvnw package'
