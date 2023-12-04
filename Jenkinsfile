@@ -9,6 +9,7 @@ pipeline {
             sh './mvnw clean'
             sh './mvnw compile'
             sh './mvnw package'
+            sh 'ls'
           }
         }
 
