@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Limpiar proyecto') {
+    stage('Limpiando y compilando') {
       steps {
         sh 'chmod +x mvnw'
         sh './mvnw clean'
