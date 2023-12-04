@@ -14,7 +14,9 @@ pipeline {
 
         stage('Creando docker') {
           steps {
-            sh 'docker build -t maestros:00 .'
+            echo 'Iniciando compilacion de imagen de Docker'
+            def dockerImage=docker.build("maestros:00")
+            //sh 'docker build -t maestros:00 .'
           }
         }
 
