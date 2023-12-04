@@ -15,7 +15,7 @@ pipeline {
         stage('Creando docker') {
           steps {
             echo 'Iniciando compilacion de imagen de Docker'
-            dir(path: 'maestros_main/target') {
+            dir(path: '/var/jenkins_home/workspace/maestros_main/target') {
               script {
                 def dockerImage=docker.build("maestros:00")
               }
