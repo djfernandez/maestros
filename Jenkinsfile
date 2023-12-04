@@ -15,11 +15,13 @@ pipeline {
         stage('Creando docker') {
           steps {
             echo 'Iniciando compilacion de imagen de Docker'
-            dir('maestros_main/target'){
+            dir(path: 'maestros_main/target') {
               script {
                 def dockerImage=docker.build("maestros:00")
               }
+
             }
+
           }
         }
 
