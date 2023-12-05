@@ -7,11 +7,9 @@ pipeline {
         sh './mvnw clean'
         sh './mvnw compile'
         sh './mvnw package'
-        sh 'pwd'
         sh 'docker build -t maestros:01 .'
       }
     }
-
   }
   environment {
     Usuario = '000'
