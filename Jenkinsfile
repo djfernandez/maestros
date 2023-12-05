@@ -15,8 +15,9 @@ pipeline {
 
         stage('Creando docker') {
           steps {
-            echo 'Iniciando compilacion de imagen de Docker'            
+            echo 'Ruta actual'
             sh 'pwd'
+            echo 'Iniciando compilacion de imagen de Docker'
             sh 'docker build -t maestros:01 .'
           }
         }
