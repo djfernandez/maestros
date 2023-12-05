@@ -15,8 +15,7 @@ pipeline {
 
         stage('Creando docker') {
           steps {
-            echo 'Iniciando compilacion de imagen de Docker'
-            sh 'chmod +x mvnw'
+            echo 'Iniciando compilacion de imagen de Docker'            
             sh 'pwd'
             sh 'docker build --build-arg FUENTES=/var/jenkins_home/workspace/maestros_main .'
           }
