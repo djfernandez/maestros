@@ -17,7 +17,7 @@ pipeline {
           steps {
             echo 'Iniciando compilacion de imagen de Docker'            
             sh 'pwd'
-            sh 'docker build --build-arg FUENTES=/var/jenkins_home/workspace/maestros_main .'
+            sh 'docker build -t maestros:01 .'
           }
         }
 
