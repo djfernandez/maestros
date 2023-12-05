@@ -3,7 +3,7 @@
 FROM openjdk:17-alpine
 ARG FUENTES
 RUN echo $FUENTES
-COPY ${FUENTES}/target/maestros-0.0.1-SNAPSHOT.jar /app/application.jar
+COPY ${FUENTES}/target/maestros-0.0.1-SNAPSHOT.jar .
 #COPY src/main/resources/application.yml /config/application.yaml
 #COPY src/main/resources/logback.xml /config/logback.xml
 EXPOSE 6061
